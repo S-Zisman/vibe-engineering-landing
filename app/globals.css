@@ -1,136 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg-void: #09080A;
-  --bg-deep: #0F0D10;
-  --bg-surface: #161318;
-  --bg-raised: #1E1A20;
-  --accent-bright: #C4B498;
-  --accent-mid: #968770;
-  --accent-dim: #564D3F;
-  --text-primary: #F0EDE8;
-  --text-body: #DDD8CE;
-  --text-muted: #9A938A;
-  --text-ghost: #4A4540;
-  --border-accent: rgba(196, 180, 152, 0.14);
-  --border-main: rgba(255, 255, 255, 0.05);
+@layer base {
+  :root {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 92%;
+
+    --card: 222 40% 8%;
+    --card-foreground: 210 40% 92%;
+
+    --popover: 222 40% 8%;
+    --popover-foreground: 210 40% 92%;
+
+    --primary: 190 90% 50%;
+    --primary-foreground: 222 47% 5%;
+
+    --secondary: 222 30% 14%;
+    --secondary-foreground: 210 40% 92%;
+
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 260 60% 55%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 18%;
+    --ring: 190 90% 50%;
+
+    --radius: 0.75rem;
+
+    --glow-cyan: 190 90% 50%;
+    --glow-purple: 260 60% 55%;
+    --star: 45 100% 85%;
+
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+    color: #fff;
+  }
 }
 
-body {
-  background-color: var(--bg-void);
-  color: var(--text-primary);
-  font-family: system-ui, Inter, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--glow-cyan) / 0.5), 0 0 40px hsl(var(--glow-cyan) / 0.2);
+  }
 
-::selection {
-  background: rgba(196, 180, 152, 0.25);
-  color: #fff;
-}
+  .text-glow-purple {
+    text-shadow: 0 0 20px hsl(var(--glow-purple) / 0.5), 0 0 40px hsl(var(--glow-purple) / 0.2);
+  }
 
-.hero-gradient-text {
-  background: linear-gradient(
-    135deg,
-    #8B7530 0%,
-    #C6A245 18%,
-    #E8D08A 38%,
-    #D4AF50 55%,
-    #A68B35 72%,
-    #C6A245 100%
-  );
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer-slow 6s ease-in-out infinite;
-}
+  .box-glow {
+    box-shadow: 0 0 30px hsl(var(--glow-cyan) / 0.15), 0 0 60px hsl(var(--glow-cyan) / 0.05);
+  }
 
-.hero-btn-filled {
-  position: relative;
-  display: inline-block;
-  padding: 14px 32px;
-  background: linear-gradient(
-    135deg,
-    #8B7530 0%,
-    #C6A245 25%,
-    #E8D08A 50%,
-    #C6A245 75%,
-    #8B7530 100%
-  );
-  background-size: 300% 300%;
-  background-position: 0% 50%;
-  transition: background-position 0.6s ease;
-}
+  .box-glow-purple {
+    box-shadow: 0 0 30px hsl(var(--glow-purple) / 0.2), 0 0 60px hsl(var(--glow-purple) / 0.1);
+  }
 
-.hero-btn-filled:hover {
-  background-position: 100% 50%;
-}
+  .gradient-cosmic {
+    background: linear-gradient(135deg, hsl(var(--glow-cyan)), hsl(var(--glow-purple)));
+  }
 
-.hero-btn-filled-text {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #09080A;
-  font-weight: 500;
-}
-
-.hero-btn-outline {
-  position: relative;
-  display: inline-block;
-  padding: 14px 32px;
-  background: transparent;
-  border: 1px solid #C6A245;
-  transition: all 0.5s ease;
-}
-
-.hero-btn-outline:hover {
-  background: linear-gradient(
-    135deg,
-    #8B7530 0%,
-    #C6A245 25%,
-    #E8D08A 50%,
-    #C6A245 75%,
-    #8B7530 100%
-  );
-  background-size: 300% 300%;
-  background-position: 100% 50%;
-  border-color: transparent;
-}
-
-.hero-btn-outline-text {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 500;
-  color: #D4AF50;
-  transition: color 0.5s ease;
-}
-
-.hero-btn-outline:hover .hero-btn-outline-text {
-  color: #09080A;
-}
-
-.cosmos-border-shimmer {
-  animation: cosmos-shimmer 4s ease-in-out infinite;
-}
-
-@keyframes cosmos-shimmer {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
-}
-
-@keyframes shimmer-slow {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
+  .gradient-cosmic-text {
+    background: linear-gradient(135deg, hsl(var(--glow-cyan)), hsl(var(--glow-purple)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }

@@ -1,20 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["cyrillic", "latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-cormorant",
-  display: "swap",
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ["cyrillic", "latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-ibm-mono",
-  display: "swap",
-});
 
 export const viewport = {
   width: "device-width",
@@ -26,11 +11,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://vibecodingcourse.sergeyzisman.tech"),
   title: "VIBE ENGINEERING 2026 — Курс по агентной разработке ИИ",
   description:
-    "Курс Сергея Зисмана по агентной инженерии. Строй ИИ-агентов для трейдинга, SaaS и DeFi.",
+    "Думать от идеала, а не от ограничений. Курс вайбкодинга + ТРИЗ: превращай идеи в работающие продукты с помощью ИИ.",
   openGraph: {
     title: "VIBE ENGINEERING 2026 — Курс по агентной разработке ИИ",
     description:
-      "Курс Сергея Зисмана по агентной инженерии. Строй ИИ-агентов для трейдинга, SaaS и DeFi.",
+      "Думать от идеала, а не от ограничений. Курс вайбкодинга + ТРИЗ.",
     images: ["/og-image.png"],
   },
 };
@@ -41,10 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="ru"
-      className={`${cormorant.variable} ${ibmPlexMono.variable}`}
-    >
+    <html lang="ru">
       <body>
         {children}
         <script
