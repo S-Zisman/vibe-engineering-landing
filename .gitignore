@@ -1,6 +1,20 @@
+# Dependencies
 node_modules
-.next
-out
-.env*
-*.log
+
+# Build
+dist
+
+# Local
+.env
+.env.local
 .DS_Store
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
